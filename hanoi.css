@@ -1,0 +1,173 @@
+@font-face {
+  font-family: titre;
+  src: url(./KaushanScript-Regular.otf);
+}
+body {
+  background-image: url(../img/gradient.png);
+}
+header {
+  /* height: 20%; */
+  border-bottom: 2px #033663 solid;
+}
+header h1 {
+  color: #033663;
+  text-align: center;
+  font-size: 3rem;
+  font-family: titre;
+  text-shadow: 2px 2px 0 #fff ,  4px 4px 2px rgba(0, 0, 0, 0.2);
+}
+main {
+  background-color: #033663;
+  min-height: 500px;
+  max-width: 100px;
+}
+.game {
+  max-width: 700px;
+}
+.play {
+  display: inline-block;
+  text-align: center;
+  padding: 20px;
+}
+.play input {
+  display: inline-block;
+  width: 10%;
+  min-width: 80px;
+}
+.play button {
+  display: inline-block;
+  width: auto;
+  background-color: #fff;
+  color: #033663;
+  font-size: 1.2rem;
+  font-family: cursive;
+  padding: 5px 25px;
+  border: solid 4px transparent;
+  border-image: linear-gradient(to right, #033663, transparent);
+  border-image-slice: 1;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.8s ease;
+}
+.play button i {
+  display: none;
+  transition: all 0.3s ease;
+}
+.play button:hover {
+  padding: 5px 10px 5px 10px;
+}
+.play button:hover i {
+  display: inline;
+}
+.game {
+  background-color: white;
+
+}
+.message {
+  display: inline-block;
+  text-align: center;
+  min-height: 60px;
+}
+.pic {
+  position: relative;
+  padding: 1%;
+  margin: 10px 1%;
+  width: 31%;
+  height: 90%;
+  min-height: 120px;
+  cursor: pointer;
+}
+.pic:hover {
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+.push {
+  transition: all 0.3s ease;
+}
+.pic:hover .push {
+  background-color: #033663;
+}
+.vertical {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  height: 70%;
+  width: 6px;
+  background-color: #033663;
+  z-index: 0;
+}
+.horizontal {
+  position: absolute;
+  left: 18%;
+  bottom: 5%;
+  height: 6px;
+  width: 70%;
+  background-color: #033663;
+  z-index: 0;
+}
+.disque-1 {
+  position: absolute;
+  width: 10%;
+  left: 47%;
+  height: 9px;
+  background-color: black;
+  z-index: 1;
+}
+.disque-2 {
+  position: absolute;
+  width: 20%;
+  left: 42%;
+  height: 9px;
+  background-color: black;
+  z-index: 1;
+}
+.disque-3 {
+  position: absolute;
+  width: 30%;
+  left: 37%;
+  height: 9px;
+  background-color: black;
+  z-index: 1;
+}
+.disque-4 {
+  position: absolute;
+  width: 40%;
+  left: 32%;
+  height: 9px;
+  background-color: black;
+  z-index: 1;
+}
+.disque-5 {
+  position: absolute;
+  width: 50%;
+  left: 27%;
+  height: 9px;
+  background-color: black;
+  z-index: 1;
+}
+.disque-6 {
+  position: absolute;
+  width: 60%;
+  left: 22%;
+  height: 9px;
+  background-color: black;
+  z-index: 1;
+}
+.rang-1 {
+  bottom: 12%;
+}
+.rang-2 {
+  bottom: 22%;
+}
+.rang-3 {
+  bottom: 32%;
+}
+.rang-4 {
+  bottom: 42%;
+}
+.rang-5 {
+  bottom: 52%;
+}
+.rang-6 {
+  bottom: 62%;
+}

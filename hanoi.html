@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tower of Hanoi</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="hanoi.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+      <h1>Tower of Hanoi</h1>
+    </header>
+    <main class="container">
+      <div class="play">
+        <input type="number" name="nmDisques" min="2" max="6" value="3" class="form-control">
+        <button id="initialise" type="button" name="button" class="btn">Start playing    <i class="fas fa-play"></i></button>
+      </div>
+
+      <div class="container-fluid game">
+        <div class="message">
+
+        </div>
+        <div class="row">
+          <div id="A" class="pic pop">
+            <!-- piquet -->
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+            <!-- disques -->
+
+          </div>
+          <div id="B" class="pic pop">
+            <!-- piquet -->
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+            <!-- disques -->
+          </div>
+          <div id="C" class="pic pop">
+            <!-- piquet -->
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+            <!-- disques -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <script src="hanoi.js"></script>
+  </body>
+</html>
