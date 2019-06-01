@@ -18,8 +18,10 @@ header h1 {
 }
 main {
   background-color: #033663;
-  min-height: 500px;
-  max-width: 100px;
+  margin: auto;
+  width: 70%;
+  max-width: 920px;
+  min-width: 740px;
 }
 .game {
   max-width: 700px;
@@ -41,9 +43,7 @@ main {
   color: #033663;
   font-size: 1.2rem;
   font-family: cursive;
-  padding: 5px 25px;
-  border: solid 4px transparent;
-  border-image: linear-gradient(to right, #033663, transparent);
+  padding: 5px 15px 5px 20px;
   border-image-slice: 1;
   border-radius: 4px;
   outline: none;
@@ -63,10 +63,12 @@ main {
   background-color: white;
 
 }
-.message {
+#message {
   display: inline-block;
   text-align: center;
-  min-height: 60px;
+  width:100%;
+  margin: 10px auto;
+  min-height: 50px;
 }
 .pic {
   position: relative;
@@ -83,9 +85,6 @@ main {
 }
 .push {
   transition: all 0.3s ease;
-}
-.pic:hover .push {
-  background-color: #033663;
 }
 .vertical {
   position: absolute;
@@ -110,64 +109,93 @@ main {
   width: 10%;
   left: 47%;
   height: 9px;
-  background-color: black;
+  background-color: #DE781F;
   z-index: 1;
+  border-radius: 3px;
 }
 .disque-2 {
   position: absolute;
   width: 20%;
   left: 42%;
   height: 9px;
-  background-color: black;
+  background-color: #e28d2d;
   z-index: 1;
+  border-radius: 3px;
 }
 .disque-3 {
   position: absolute;
   width: 30%;
   left: 37%;
   height: 9px;
-  background-color: black;
+  background-color: #e79a3a;
   z-index: 1;
+  border-radius: 3px;
 }
 .disque-4 {
   position: absolute;
   width: 40%;
   left: 32%;
   height: 9px;
-  background-color: black;
+  background-color: #eeb54a;
   z-index: 1;
+  border-radius: 3px;
 }
 .disque-5 {
   position: absolute;
   width: 50%;
   left: 27%;
   height: 9px;
-  background-color: black;
+  background-color: #edcb64;
   z-index: 1;
+  border-radius: 3px;
 }
 .disque-6 {
   position: absolute;
   width: 60%;
   left: 22%;
   height: 9px;
-  background-color: black;
+  background-color: #eedd7f;
   z-index: 1;
+  border-radius: 3px;
 }
 .rang-1 {
   bottom: 12%;
+  transition: all 0.3s ease;
 }
 .rang-2 {
   bottom: 22%;
+  transition: all 0.3s ease;
 }
 .rang-3 {
   bottom: 32%;
+  transition: all 0.3s ease;
 }
 .rang-4 {
   bottom: 42%;
+  transition: all 0.3s ease;
 }
 .rang-5 {
   bottom: 52%;
+  transition: all 0.3s ease;
 }
 .rang-6 {
   bottom: 62%;
+  transition: all 0.3s ease;
+}
+.rang {
+  bottom: 92%;
+  transition: all 0.3s ease;
+}
+hr {
+  background-color: white;
+}
+#movements {
+  color: white;
+}
+#movements #numberMovements , #movements #minMovements {
+  font-weight: 700;
+}
+#rule {
+  color: white;
+  padding-bottom: 20px;
 }

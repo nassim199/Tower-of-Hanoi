@@ -11,38 +11,54 @@
     <header>
       <h1>Tower of Hanoi</h1>
     </header>
-    <main class="container">
+    <main>
       <div class="play">
         <input type="number" name="nmDisques" min="2" max="6" value="3" class="form-control">
         <button id="initialise" type="button" name="button" class="btn">Start playing    <i class="fas fa-play"></i></button>
       </div>
 
       <div class="container-fluid game">
-        <div class="message">
+        <div id="message" class="alert">
 
         </div>
         <div class="row">
-          <div id="A" class="pic pop">
+          <div class="pic">
             <!-- piquet -->
             <div class="horizontal"></div>
             <div class="vertical"></div>
             <!-- disques -->
 
           </div>
-          <div id="B" class="pic pop">
+          <div class="pic">
             <!-- piquet -->
             <div class="horizontal"></div>
             <div class="vertical"></div>
             <!-- disques -->
           </div>
-          <div id="C" class="pic pop">
+          <div class="pic">
             <!-- piquet -->
             <div class="horizontal"></div>
             <div class="vertical"></div>
             <!-- disques -->
           </div>
         </div>
+      </div>
 
+      <br>
+      <div id="movements" class="container-fluid">
+        <p>Movements :  <span id="numberMovements">00</span></p>
+        <hr>
+        <p>This part can be solved in :  <span id="minMovements">??</span>  movements</p>
+      </div>
+      <div class="container-fluid" id="rule">
+        <h3>Rules :</h1>
+        <p>The goal of the puzzle is to move all the disks from the leftmost peg to the
+        rightmost peg, adhering to the following rules:</p>
+        <ul>
+          <li> Move only one disk at a time.</li>
+          <li>A larger disk may not be placed on top of a smaller disk.</li>
+          <li>All disks, except the one being moved, must be on a peg.</li>
+        </ul>
       </div>
     </main>
     <script src="hanoi.js"></script>

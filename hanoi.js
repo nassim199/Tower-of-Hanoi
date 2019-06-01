@@ -1,167 +1,149 @@
 const input=document.querySelector('input');
 const button=document.getElementById('initialise');
 const pics=document.querySelectorAll('.pic');
-let piquetsGlobal;
+const message=document.getElementById('message');
+const minMovements=document.getElementById('minMovements');
+const numberMovements=document.getElementById('numberMovements');
+var play=false, p=false,n,l;
+//user interface
+class UI {
+  static showMessage(alertMessage, alert) {
+    message.classList.remove(`alert-info`);
+    message.classList.remove(`alert-warning`);
+    message.innerHTML='';
+    message.classList.add(`alert-${alert}`);
+    message.innerHTML=alertMessage;
+    if (alert!=='success')
+      setTimeout(() => {
+        message.classList.remove(`alert-${alert}`);
+        if(alertMessage===message.innerHTML)
+          message.innerHTML='';
+      },3000);
+  }
+  static createDisque(taille,rang) {
+    let disqueUI;
+    disqueUI = document.createElement('div');
+    disqueUI.className =`disque-${taille} rang-${rang}`;
+    return disqueUI;
+  }
+  static initialise(n) {
+    let disque;
+    minMovements.innerHTML=Math.pow(2,n)-1;
+    l=0;
+    pics.forEach(pic => {
+      let inter;
+      inter=pic.lastElementChild;
+      while(!inter.classList.contains('vertical')) {
+        inter.remove();
+        inter=pic.lastElementChild;
+      }
+    })
+    for (var i = n; i > 0; i--) {
+      disque= UI.createDisque(i,n-i+1);
+      pics[0].appendChild(disque);
+    }
+  }
+  static pushDisque(index,taille) {
+    let rang,x,arrayClassName,disque;
 
-//disque
-class Disque {
-  constructor(taille,rang) {
-    this.taille=taille;
-    this.rang=rang;
+    if(pics[index].lastElementChild.classList.contains('vertical')) {
+      rang=1;
+      disque=UI.createDisque(taille,rang);
+      disque.classList.add('rang');
+      return {
+          boole:true,
+          disqueUI:disque
+        };
+    } else {
+      arrayClassName=pics[index].lastElementChild.className.split(' ');
+      x=arrayClassName[0];
+      if (parseInt(x[x.length-1])>=taille) {
+        x=arrayClassName[1];
+        rang=parseInt(x[x.length-1])+1;
+        disque=UI.createDisque(taille,rang);
+        disque.classList.add('rang');
+        return {
+            boole:true,
+            disqueUI:disque
+          };
+      } else {
+        UI.showMessage('You can\'t move it to this picket','warning');
+        return false;
+      }
+    }
   }
-  setRang(rang) {
-    this.rang=rang;
+  static popDisque(index) {
+    let disqueUI,arrayClassName,x;
+    disqueUI=pics[index].lastElementChild;
+    if (!disqueUI.classList.contains('vertical')) {
+      UI.move(disqueUI);
+      arrayClassName=disqueUI.className.split(' ');
+      x=arrayClassName[0];
+      return parseInt(x[x.length-1]);
+    } else {
+      return 0;
+    }
   }
-}
-
-//piquet
-class Piquet {
-  constructor(disques) {
-    this.disques=disques;
+  static move(disqueUI) {
+    disqueUI.classList.add('rang');
   }
-  pushD(disque) {
-    console.log('one push');
-    let l= this.disques.length;
-    if (l==0 || this.disques[l-1].taille > disque.taille) {
-      this.disques.push(disque);
+  static win(n) {
+    let arrayClassName=pics[2].lastElementChild.className.split(' '),x;
+    if (arrayClassName[1])
+      x=arrayClassName[1];
+    else
+      x=0;
+    let rang=parseInt(x[x.length-1]);
+    if (rang==n) {
       return true;
     } else {
       return false;
     }
   }
-  popD() {
-    if (this.disques.length != 0) {
-      return this.disques.pop();
-    } else {
-      return false;
-    }
-  }
-}
-
-//logique du jeut
-class game {
-    static initialise(n) {
-      let piquets=[];
-      let disques=[];
-      let disque,piquet;
-      for (var i = n; i > 0; i--) {
-        disque = new Disque(i,n-i+1);
-        disques.push(disque);
-      }
-      piquet= new Piquet(disques);
-      piquets.push(piquet);
-      piquet= new Piquet([]);
-      piquets.push(piquet);
-      piquets.push(piquet);
-      return piquets;
-    }
-    static move(piquets,i,j) {
-      console.log(i +' ' + j);
-      let disque=piquets[i].popD();
-      if (disque) {
-        if (piquets[j].pushD(disque)) {
-          if (j===2 && piquets[2].disques.length === (piquets[2].disques.length+
-                                                      piquets[2].disques.length+
-                                                      piquets[2].disques.length)) {
-            return {
-              alertMessage: 'victoire',
-              boole: true
-            }
-
-          } else {
-            return {
-              alertMessage: '',
-              boole: true
-            }
-          }
-        } else {
-          return {
-            alertMessage: 'impossible',
-            boole: false
-          }
-        }
-      } else {
-        return {
-          alertMessage: 'impossible',
-          boole: false
-        }
-      }
-    }
-}
-
-//user interface
-class UI {
-  static showMessage(message) {
-    console.log(message);
-  }
-  static createDisque(disque) {
-    let disqueUI;
-    disqueUI = document.createElement('div');
-    disqueUI.className =`disque-${disque.taille} rang-${disque.rang}`;
-    return disqueUI;
-  }
-  static initialise(piquets) {
-    pics.forEach((pic,index) => {
-      piquets[index].disques.forEach(disque => {
-        pic.appendChild(UI.createDisque(disque));
-      });
-      if (index===0) {
-        pic.lastElementChild.classList.add('push');
-      }
-    })
-  }
-  static pushDisque(index,disque) {
-    let rang,x;
-    pics[index].lastElementChild.classList.remove('push');
-    if(pics[index].lastElementChild.classList.contains('vertical')) {
-      rang=1;
-    } else {
-      x=pics[index].lastElementChild.className;
-      rang=parseInt(x[x.length-1])+1;
-    }
-    disque.classList.add(`rang-${rang}`);
-    pics[index].appendChild(disque);
-  }
-  static popDisque(index) {
-    let disqueUI,arrayClassName;
-    disqueUI= pics[index].lastElementChild;
-    pics[index].lastElementChild.remove();
-    if (!pics[index].lastElementChild.classList.contains('vertical')) {
-        pics[index].lastElementChild.classList.add('push');
-    }
-    arrayClassName=disqueUI.className.split(' ');
-    disqueUI.classList.remove(arrayClassName[1]);
-    return disqueUI;
-  }
-  static move(disqueUI) {
-
-  }
 }
 //Events
-let i;
+let i,last,result;
 pics.forEach((pic,index) => {
   pic.addEventListener('click',(e) => {
-    if(e.target.classList.contains('pop')) {
-      //pop
-      pics.forEach(pic => pic.classList.remove('pop'));
-      i = index;
-  //    console.log('pop disque piquet '+i);
-    } else {
-    //  console.log('push marche');
-      //push
-      if (game.move(piquetsGlobal,i,index).boole) {
-    //    console.log('push disque de piquet '+ i + ' a piquet ' + index);
-        UI.pushDisque(index,UI.popDisque(i))
-        pics.forEach(pic => pic.classList.add('pop'));
+    if(play) {
+      if(!p) {
+        //pop
+        i = UI.popDisque(index);
+        if (i) {
+          p=true;
+          last=index;
+        } else {
+          UI.showMessage('This peg is empty', 'info');
+        }
+      } else {
+        //push
+          result=UI.pushDisque(index,i);
+          if(result.boole) {
+            if (last !== index) {
+              pics[last].lastElementChild.remove();
+              pics[index].appendChild(result.disqueUI);
+            }
+            setTimeout(() => pics[index].lastElementChild.classList.remove('rang'), 100);
+            p=false;
+            l++;
+            numberMovements.innerHTML=l;
+            if (UI.win(n)) {
+              UI.showMessage('CONGRATULATIONS !! You win ','success');
+              play=false;
+            }
+          }
       }
+    } else {
+      UI.showMessage('Yous must start the game first','info');
     }
   });
-})
+});
 button.addEventListener('click',function() {
-  if (input.value<=6 && input.value>=2) {
-    piquetsGlobal=game.initialise(input.value);
-    UI.initialise(piquetsGlobal);
+  n=input.value;
+  if (n<=6 && n>=2) {
+    UI.initialise(n);
+    play=true;
   } else {
-    UI.showMessage('le nombre de disques doit etre entre 3 et 7');
+    UI.showMessage('The number of disks must be between 2 and 6','warning');
   }
 });
