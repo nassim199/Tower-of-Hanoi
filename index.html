@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tower of Hanoi</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="hanoi.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  </head>
+  <body>
+    <header>
+      <h1>Tower of Hanoi</h1>
+    </header>
+    <main>
+      <div class="play">
+        <input type="number" name="nmDisques" min="2" max="6" value="3" class="form-control">
+        <button id="initialise" type="button" name="button" class="btn">Start playing    <i class="fas fa-play"></i></button>
+      </div>
+
+      <div class="container-fluid game">
+        <div id="message" class="alert">
+
+        </div>
+        <div class="row">
+          <div class="pic">
+            <!-- piquet -->
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+            <!-- disques -->
+
+          </div>
+          <div class="pic">
+            <!-- piquet -->
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+            <!-- disques -->
+          </div>
+          <div class="pic">
+            <!-- piquet -->
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+            <!-- disques -->
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div id="movements" class="container-fluid">
+        <p>Movements :  <span id="numberMovements">00</span></p>
+        <hr>
+        <p>This part can be solved in :  <span id="minMovements">??</span>  movements</p>
+      </div>
+      <div class="container-fluid" id="rule">
+        <h3>Rules :</h1>
+        <p>The goal of the puzzle is to move all the disks from the leftmost peg to the
+        rightmost peg, adhering to the following rules:</p>
+        <ul>
+          <li> Move only one disk at a time.</li>
+          <li>A larger disk may not be placed on top of a smaller disk.</li>
+          <li>All disks, except the one being moved, must be on a peg.</li>
+        </ul>
+      </div>
+    </main>
+
+    <script src="hanoi.js"></script>
+  </body>
+</html>
