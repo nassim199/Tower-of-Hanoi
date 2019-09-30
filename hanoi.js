@@ -1,3 +1,4 @@
+
 const input=document.querySelector('input');
 const button=document.getElementById('initialise');
 const pics=document.querySelectorAll('.pic');
@@ -28,8 +29,12 @@ class UI {
   }
   static initialise(n) {
     let disque;
+    p=false;
+    message.innerHTML='';
+    message.classList.remove('alert-success');
     minMovements.innerHTML=Math.pow(2,n)-1;
     l=0;
+    numberMovements.innerHTML=l;
     pics.forEach(pic => {
       let inter;
       inter=pic.lastElementChild;
@@ -101,6 +106,7 @@ class UI {
     }
   }
 }
+
 //Events
 let i,last,result;
 pics.forEach((pic,index) => {

@@ -83,9 +83,9 @@ main {
   border: 1px solid rgba(0,0,0,0.3);
   border-radius: 4px;
 }
-.push {
-  transition: all 0.3s ease;
-}
+/* .pic:hover div:last-child {
+  transform: translateY(-7px);
+} */
 .vertical {
   position: absolute;
   left: 50%;
